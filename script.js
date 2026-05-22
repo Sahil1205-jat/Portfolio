@@ -25,16 +25,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
+    }, { rootMargin: '0px 0px -20px 0px', threshold: 0.05 });
 
-    // Target individual cards as well as sections for a more dynamic cascade feel
-    const animatedElements = document.querySelectorAll('section, .skill-card, .project-card, .article-card, .timeline-item');
+    // Target individual sections instead of both sections and children to prevent mobile viewport conflicts
+    const animatedElements = document.querySelectorAll('section');
     animatedElements.forEach(el => {
         el.style.opacity = 0;
         // Start slightly lower and scaled down
-        el.style.transform = 'translateY(40px) scale(0.96)';
+        el.style.transform = 'translateY(30px) scale(0.98)';
         // Extremely smooth custom bezier curve
-        el.style.transition = 'opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)';
+        el.style.transition = 'opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
         observer.observe(el);
     });
 });
