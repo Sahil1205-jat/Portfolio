@@ -118,12 +118,13 @@ nav .nav-links a:hover {
     border-radius: 5px;
     text-decoration: none;
     font-weight: 600;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .cta-button:hover {
     background: var(--primary-hover);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
 }
 
 /* Sections General Styling */
@@ -189,12 +190,12 @@ h2::after {
     padding: 2rem 1rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .skill-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
 }
 
 .skill-card i {
@@ -210,7 +211,7 @@ h2::after {
 /* Projects Section */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -221,11 +222,12 @@ h2::after {
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
 }
 
 .project-card img {
@@ -346,14 +348,32 @@ footer {
         display: block;
     }
 
-    .hero-content h1 { font-size: 2.8rem; }
-    .hero-content h2 { font-size: 1.5rem; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content h2 { font-size: 1.3rem; }
 
     .about-content {
         flex-direction: column;
         text-align: center;
+        gap: 1.5rem;
     }
-    /* Testimonials Section */
+    
+    .timeline-item {
+        padding-left: 35px;
+        padding-right: 10px;
+    }
+    
+    .timeline::after {
+        left: 10px;
+    }
+    
+    .timeline-dot {
+        left: 1px;
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Testimonials Section */
 #testimonials {
     background: var(--secondary-color);
     text-align: center;
@@ -458,5 +478,4 @@ footer {
 }
 .timeline-content p {
     font-size: 0.95rem;
-}
 }

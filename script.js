@@ -15,20 +15,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Optional: Add a subtle scroll animation effect to sections
-    const observer = new IntersectionObserver((entries) => {
+    // Add a smoother scroll animation effect to elements
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transform = 'translateY(0) scale(1)';
+                // Stop observing once animated so it doesn't replay when scrolling back up
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
-    document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = 0;
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        observer.observe(section);
+    // Target individual cards as well as sections for a more dynamic cascade feel
+    const animatedElements = document.querySelectorAll('section, .skill-card, .project-card, .article-card, .timeline-item');
+    animatedElements.forEach(el => {
+        el.style.opacity = 0;
+        // Start slightly lower and scaled down
+        el.style.transform = 'translateY(40px) scale(0.96)';
+        // Extremely smooth custom bezier curve
+        el.style.transition = 'opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)';
+        observer.observe(el);
     });
 });
